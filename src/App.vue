@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" src="./assets/3237_LOGO_YOOBOT.png" width="320">
+    <pomodoro/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Pomodoro from './components/Pomodoro/Pomodoro'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Pomodoro
   }
 }
 </script>
@@ -23,6 +23,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+.pointer {
+  cursor: pointer;
 }
 </style>
