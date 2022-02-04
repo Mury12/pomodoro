@@ -8,10 +8,10 @@
           <b-col class="text-center">
             <h1 class="counter">{{ timeRemaining }}</h1>
             <b-badge variant="info" style="font-size: 1em"
-              >Tempo para o fim do ciclo de <b>{{ currentCycleName }}</b>
+              >Time until <b>{{ currentCycleName }} </b>cycle ends
             </b-badge>
             <h1 class="mt-5">{{ elapsedTime }}</h1>
-            <b-badge variant="info">Tempo decorrido até agora </b-badge>
+            <b-badge variant="info">Elapsed time</b-badge>
           </b-col>
         </b-row>
       </b-col>
@@ -19,9 +19,17 @@
         cols="12"
         order-md="1"
         md="3"
-        class="shadow-sm border-right border-left border-bottom rounded pt-2 pb-3 overflow-none mt-5 mt-md-0"
+        class="
+          shadow-sm
+          border-right border-left border-bottom
+          rounded
+          pt-2
+          pb-3
+          overflow-none
+          mt-5 mt-md-0
+        "
       >
-        <h5>Configurações</h5>
+        <h5>Settings</h5>
         <b-row>
           <b-col cols="6" md="12">
             <y-b-form-input
@@ -36,7 +44,7 @@
           >
           <b-col cols="6" md="12">
             <y-b-form-input
-              title="Tempo de descanso:"
+              title="Rest time:"
               v-model="restTime"
               v-mask="'##h##'"
               readonly
@@ -47,14 +55,14 @@
           >
           <b-col cols="6" md="12">
             <y-b-form-input
-              title="Inicia às:"
+              title="Starts at:"
               v-model="startAtTime"
               v-mask="['##h##']"
               :disabled="!onlyInsideInterval"
           /></b-col>
           <b-col cols="6" md="12">
             <y-b-form-input
-              title="Encerra às:"
+              title="Ends at:"
               v-model="stopsAtTime"
               v-mask="['##h##']"
               :disabled="!onlyInsideInterval"
@@ -64,20 +72,11 @@
               switch
               v-model="onlyInsideInterval"
               class="pointer text-left"
-              >Apenas no intervalo programado</b-checkbox
+              >Use defined interval</b-checkbox
             >
             <b-checkbox switch v-model="sound.play" class="pointer text-left"
-              >Notificação sonora</b-checkbox
+              >Sound notification</b-checkbox
             >
-            <!-- <b-checkbox
-              switch
-              v-model="sharpTime"
-              v-b-tooltip.right="
-                'Considerar a diferença entre o horário real de início e horário de início programado'
-              "
-              class="pointer text-left"
-              >Considerar diferença de horário de início</b-checkbox
-            >-->
           </b-col>
           <b-col cols="6" md="12">
             <b-button
@@ -109,12 +108,12 @@
     >
       <h1 class="counter">{{ timeToStart }}</h1>
       <b-badge variant="info" style="font-size: 1em"
-        >Tempo até o início
+        >Time until timer starts
       </b-badge>
       <br />
       <div class="d-flex w-100 mt-5 justify-content-end">
         <b-button variant="danger" @click="stopWaitingForStart">
-          Cancelar espera
+          Cancel waiting
         </b-button>
       </div>
     </b-modal>
@@ -181,9 +180,7 @@ export default {
       toStartInterval: null,
     };
   },
-  methods: {
-    
-  },
+  methods: {},
   watch: {
     timeRemaining(n) {
       if (n.match("00:00:00") && this.status === 1) {
@@ -194,21 +191,21 @@ export default {
   computed: {
     currentStatus() {
       return this.status === 0
-        ? "Parado"
+        ? "Stopped"
         : this.status === 1
-        ? "Em andamento"
+        ? "In progress"
         : this.status === 2
-        ? "Em pausa"
+        ? "Paused"
         : " - ";
     },
     currentCycleName() {
-      return this.currentCycle === 1 ? "Foco!" : "Descanso";
+      return this.currentCycle === 1 ? "Focus!" : "Rest";
     },
     currentButtonMessage() {
-      return this.status === 0 ? "Iniciar" : "Encerrar";
+      return this.status === 0 ? "Start" : "Finish";
     },
     currentPauseButtonMessage() {
-      return this.status === 1 ? "Pausar" : "Retomar";
+      return this.status === 1 ? "Pause" : "Unpause";
     },
   },
   mounted() {

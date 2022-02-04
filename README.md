@@ -1,4 +1,9 @@
-# pomodoro-vue
+# Vue Pomodoro
+A simple Pomodoro technique helper written in VueJS♥. 
+
+>This is a free software and you can distribute following the MIT liscense.
+
+
 
 ## Project setup
 ```
