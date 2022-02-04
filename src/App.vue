@@ -26,7 +26,7 @@
       <small>
         If I helped you in some way and you want to contribute, you can make a
         donation in BNB, MATIC or ETH to <br />
-        <a href="#" @click.prevent="copy"
+        <a href="#" @click.prevent="copyToClipboard('0xd7d1DB401EA825b0325141Cd5e6cd7C2d01825f2')"
           >0xd7d1DB401EA825b0325141Cd5e6cd7C2d01825f2</a
         >
       </small>
@@ -51,6 +51,7 @@ export default {
      * @returns void
      */
     copyToClipboard(content) {
+      console.log('hel')
       let clipboard;
       if (typeof content === "object") {
         clipboard = JSON.stringify(content);
@@ -62,12 +63,13 @@ export default {
 
       target.select();
 
-      this.$bvToast.toast("Address copied to clipboard.", {
-        type: "success",
-      });
 
       document.execCommand("copy");
       document.body.removeChild(target);
+      this.$bvToast.toast("Address copied to clipboard.", {
+        variant: "success",
+        title: 'Success'
+      });
     },
   },
 };
