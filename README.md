@@ -1,7 +1,7 @@
 # Vue Pomodoro
 A simple Pomodoro technique helper written in VueJS♥. 
 
->This is a free software and you can distribute following the MIT liscense.
+>This is a free software and you can distribute following the MIT license.
 
 
 
